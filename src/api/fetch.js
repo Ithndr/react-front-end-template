@@ -79,6 +79,6 @@ module.exports = {
     fetchLogin,
     fetchUser,
     fetchRegister,
-    getAllRoutines
+    getAllRoutines,
     fetchActivity
 }
