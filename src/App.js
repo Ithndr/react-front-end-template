@@ -19,7 +19,6 @@ const App = () => {
   useEffect(() => {
     const fetchAllRoutines = async () => {
       const fetchedRoutines = await getAllRoutines()
-      console.log('this is fetchedRoutines', fetchedRoutines)
       setRoutines(fetchedRoutines)
     }
     fetchAllRoutines()
@@ -27,11 +26,8 @@ const App = () => {
   
   useEffect(()=> {
     const fetchActivities = async ()=>{
-      const response = await fetch(url);
-      console.log("response",response);
-      const data = await response.json();
-      console.log("looking for data",data);
-      setActivities(data);
+      const fetchedActivities = await fetchActivity();
+      setActivities(fetchedActivities);
     }
     
     fetchActivities();

@@ -2,7 +2,6 @@ import React from 'react';
 
 const AllRoutines = (props) => {
     const routines = props.routines;
-    console.log('this is routines', routines)
     return (
        <div> 
         <h2> All Routines</h2>

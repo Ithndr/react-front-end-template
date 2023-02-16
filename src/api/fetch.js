@@ -49,26 +49,21 @@ const fetchRegister = async (username, password) => {
 
 const getAllRoutines = async () => {
     try {
-        const response = await fetch ('http://fitnesstrac-kr.herokuapp.com/api/routines');
-        const result = await response.json();
-        console.log(result)
-        return result 
+        const response = await fetch('http://fitnesstrac-kr.herokuapp.com/api/routines');
+        const result = await response.json()
+        return result
     } catch (error) {
         console.error(error)
     }
 }
-const fetchActivity= async () =>{
+const fetchActivity = async () => {
     try {
         const response = await fetch('http://fitnesstrac-kr.herokuapp.com/api/activities', {
             headers: {
-              'Content-Type': 'application/json',
+                'Content-Type': 'application/json',
             },
-          }).then(response => response.json())
-            .then(result => {
-              //console.log(result);
-            })
-            const result = await response.json()
-            //console.log(result);
+        })
+        const result = await response.json()
         return result;
     } catch (error) {
         console.error(error);
