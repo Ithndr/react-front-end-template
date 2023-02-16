@@ -3,9 +3,9 @@ import React, { useState } from 'react';
 export const Profile = (props) => {
     const user = props.user;
     const routines = props.routines;
-    const myActivites = props.activities;
-    console.log(myActivites);
-    console.log(props);
+    const activities = props.activities;
+    console.log(routines)
+    console.log(activities);
     if (!user.username) {
         return <h1>Please log in before viewing profile</h1>
     }
@@ -30,13 +30,12 @@ export const Profile = (props) => {
                     <div className='myActivities'>
                     {
                             activities.map((activity) => {
-                                if(routine.creatorId === user.id){
-                                return <div key={routine.id}>
-                                    <h3> Name: {routine.name} </h3>
-                                    <p> Goal: {routine.goal} </p>
-                                    <p> Activities: {routine.activities.length} </p>
+                                
+                                return <div key={activity.id}>
+                                    <h3> Name: {activity.name} </h3>
+                                    <p> Description: {activity.description} </p>
                                 </div>
-                                }
+                                
                             })
                         }
                     </div>
