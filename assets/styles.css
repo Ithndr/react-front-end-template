@@ -1,3 +1,22 @@
 body {
   font-family: verdana;
+  width: 100%;
+  padding: 0 1.5rem;
+  background-color:lavender(234, 183, 234);
+}
+.container{
+  padding: 1px;
+  margin: 0.5px;
+  font: 30px;
+  color: black;
+  font-family: 'Courier New', Courier, monospace;
+}
+nav {
+  display: flex;
+  justify-content: space-around;
+  margin: 5px;
+  padding: 5px;
+  border: 1px solid lightskyblue;
+  box-shadow: 0 1rem 6rem black;
+  border-radius: 0.5rem;
 }

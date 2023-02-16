@@ -8,9 +8,10 @@ const fetchLogin = async (username, password) => {
             body: JSON.stringify({
                 username: username,
                 password: password
-            })
-        })
-        const result = await response.json()
+            }),
+        });
+        const result = await response.json();
+        console.log("login result",result);
         return result;
     } catch (error) {
         console.error(error)
@@ -24,7 +25,7 @@ const fetchUser = async (token) => {
                 'Authorization': `Bearer ${token}`
             },
         })
-        const result = await response.json()
+        const result = await response.json();
         return result;
     } catch (error) {
         console.error(error)
@@ -40,7 +41,7 @@ const fetchRegister = async (username, password) => {
                 password: password
             })
         })
-        const result = await response.json()
+        const result = await response.json();
         return result;
     } catch (error) {
         console.error(error);
@@ -50,7 +51,7 @@ const fetchRegister = async (username, password) => {
 const getAllRoutines = async () => {
     try {
         const response = await fetch('http://fitnesstrac-kr.herokuapp.com/api/routines');
-        const result = await response.json()
+        const result = await response.json();
         return result
     } catch (error) {
         console.error(error)
@@ -63,7 +64,7 @@ const fetchActivity = async () => {
                 'Content-Type': 'application/json',
             },
         })
-        const result = await response.json()
+        const result = await response.json();
         return result;
     } catch (error) {
         console.error(error);

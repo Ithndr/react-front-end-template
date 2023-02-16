@@ -3,11 +3,9 @@ import { Routes, Route, Link } from 'react-router-dom';
 import { Login } from "./components/login"
 import { Register } from './components/register';
 import { Profile } from './components/profile';
-import { getAllRoutines } from './api/fetch';
+import { fetchUser, getAllRoutines, fetchActivity } from './api/fetch';
 import Routine from './components/Routine/index'
-import { AllActivity } from './components/activity/ViewActivity';
-import { fetchActivity } from './api/fetch';
-const url = 'http://fitnesstrac-kr.herokuapp.com/api/activities'
+import { AllActivity } from './components/activity/viewActivity';
 
 const App = () => {
   const [user, setUser] = useState({});
@@ -16,42 +14,47 @@ const App = () => {
   const [token, setToken] = useState(null);
   const [routines, setRoutines] = useState([]);
   const [activities, setActivities]= useState([]);
+
   useEffect(() => {
-    const fetchAllRoutines = async () => {
-      const fetchedRoutines = await getAllRoutines()
-      setRoutines(fetchedRoutines)
-    }
-    fetchAllRoutines()
-  }, []) 
-  
-  useEffect(()=> {
-    const fetchActivities = async ()=>{
+    const fetchData = async () => {
+      const fetchedRoutines = await getAllRoutines();
+      setRoutines(fetchedRoutines);
       const fetchedActivities = await fetchActivity();
       setActivities(fetchedActivities);
     }
-    
-    fetchActivities();
-   
-  }, []);
+    fetchData();
+  }, []) 
+
+  // useEffect(()=>{
+  //   const exchangeTokenForUser = async ()=>{
+  //     let token = window.localStorage.getItem('token');
+  //     if(token){
+  //       let user = await fetchUser(token);
+  //       setToken(user);
+  //     }
+  //   }
+  //   exchangeTokenForUser();
+  // }, [])
+  
 
   return (
     <div>
+      <h1 className="container">Fitness Tracker</h1>
       <nav className='navBar'>
         <Link to='/login'>Login</Link>
         <Link to='/register'>Register</Link>
         <Link to='/profile'>Profile</Link>
-        <Link to='/viewActivity'>Activities</Link>
+        <Link to='/activities'>Activities</Link>
         <Link to= '/routines'>Routines</Link>
       </nav>
       {user.username ? <h3>{`welcome back: ${user.username}`}</h3>:null}
      
-
       <Routes>
         <Route path='/login' element={<Login user={user} setUser={setUser} token={token} />} />
         <Route path='/register' element={<Register setUser={setUser} setToken={setToken} />} />
         <Route path='/profile' element={<Profile routines={routines} activities={activities} user={user} />}/>
-        <Route path = '/routines' element = {<Routine routines={routines}/>}/>
-        <Route path='/viewActivity' element={<AllActivity activities={activities} />} />
+        <Route path='/routines' element = {<Routine routines={routines}/>}/>
+        <Route path='/activities' element={<AllActivity activities={activities} />} />
       </Routes>
     </div>
   );

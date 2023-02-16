@@ -4,8 +4,8 @@ export const Profile = (props) => {
     const user = props.user;
     const routines = props.routines;
     const activities = props.activities;
-    console.log(routines)
-    console.log(activities);
+    //console.log(routines)
+   //console.log(activities);
     if (!user.username) {
         return <h1>Please log in before viewing profile</h1>
     }
