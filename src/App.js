@@ -44,10 +44,11 @@ const App = () => {
         <Link to='/login'>Login</Link>
         <Link to='/register'>Register</Link>
         <Link to='/profile'>Profile</Link>
-        <Link to='/viewActivity'> Activities</Link>
+        <Link to='/viewActivity'>Activities</Link>
+        <Link to= '/routines'>Routines</Link>
       </nav>
       {user.username ? <h3>{`welcome back: ${user.username}`}</h3>:null}
-      <Routine routines={routines}/>
+     
 
       <Routes>
         <Route path='/login' element={<Login user={user} setUser={setUser} token={token} />} />
