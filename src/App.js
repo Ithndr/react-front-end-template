@@ -47,13 +47,13 @@ const App = () => {
         <Link to='/activities'>Activities</Link>
         <Link to= '/routines'>Routines</Link>
       </nav>
-      {user.username ? <h3>{`welcome back: ${user.username}`}</h3>:null}
+      {user.username ? <h3>{`Welcome back: ${user.username}`}</h3>:null}
      
       <Routes>
         <Route path='/login' element={<Login user={user} setUser={setUser} token={token}  />} />
         <Route path='/register' element={<Register setUser={setUser} setToken={setToken} />} />
         <Route path='/profile' element={<Profile routines={routines} activities={activities} user={user} />}/>
-        <Route path='/routines' element = {<Routine routines={routines}/>}/>
+        <Route path='/routines' element = {<Routine routines={routines} token= {token} user={user} />}/>
         <Route path='/activities' element={<AllActivity activities={activities} />} />
       </Routes>
     </div>

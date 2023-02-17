@@ -71,10 +71,31 @@ const fetchActivity = async () => {
     }
 }
 
+const createNewRoutine = async (token, name, goal) => {
+    try { const response = await fetch('http://fitnesstrac-kr.herokuapp.com/api/routines', {
+        method: "POST",
+        headers: {
+            'Content-Type': 'application/json',
+            Authorization: `Bearer ${token}`,
+        },
+        body: JSON.stringify({
+          name: name,
+          goal: goal,
+          isPublic: true
+        })
+      })
+        const result = await response.json();
+       return result
+    } catch (error) {
+        console.error(error)
+    }
+}
+
 module.exports = {
     fetchLogin,
     fetchUser,
     fetchRegister,
     getAllRoutines,
-    fetchActivity
+    fetchActivity,
+    createNewRoutine
 }

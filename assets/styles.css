@@ -20,3 +20,13 @@ nav {
   box-shadow: 0 1rem 6rem black;
   border-radius: 0.5rem;
 }
+
+
+form {
+  display: flex;
+  flex-direction: column;
+}
+
+form > * {
+  margin:1rem;
+}
