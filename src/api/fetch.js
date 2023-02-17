@@ -81,7 +81,7 @@ const createNewRoutine = async ({token, name, goal, isPublic}) => {
         body: JSON.stringify({
           name: name,
           goal: goal,
-          isPublic: true
+          isPublic: isPublic
         })
       })
         const result = await response.json();

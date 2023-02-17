@@ -13,7 +13,7 @@ const AllRoutines = (props) => {
         <h2> Routines</h2>
         { user.username ? 
             <div> 
-            <form onSubmit = {() => createNewRoutine({token, name, goal, isPublic})}>
+            <form>
                 <input
                     placeholder = 'Name'
                     value = {name}
@@ -24,13 +24,16 @@ const AllRoutines = (props) => {
                     value = {goal}
                     onChange = {(ev) => setGoal(ev.target.value)}
                 />
+                <div>
                 <input 
                     type= 'checkbox'
                     value = {isPublic}
                     onChange = {(ev) => setIsPiblic(ev.target.checked)}
                 />
+                <label>Will this routine be public?</label>
+                </div>
             </form>
-            <button onClick = {() => createNewRoutine({token, name, goal})}> Create New Routine </button>    
+            <button onClick = {() => createNewRoutine({token, name, goal, isPublic})}> Create New Routine </button>    
         </div> 
             : null}
     

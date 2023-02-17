@@ -13,7 +13,7 @@ const App = () => {
   const [password, setPassword] = useState('');
   const [token, setToken] = useState(null);
   const [routines, setRoutines] = useState([]);
-  const [activities, setActivities]= useState([]);
+  const [activities, setActivities] = useState([]);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -23,50 +23,52 @@ const App = () => {
       setActivities(fetchedActivities);
     }
     fetchData();
-  }, []) 
+  }, [])
 
-  useEffect(()=>{
-    const exchangeTokenForUser = async ()=>{
-      let token = window.localStorage.getItem('token');
-      if(token){
+  useEffect(() => {
+    const exchangeTokenForUser = async () => {
+      let windowToken = window.localStorage.getItem('token');
+      if (windowToken) {
+        setToken(windowToken)
         let user = await fetchUser(token);
         setUser(user);
       }
     };
     exchangeTokenForUser();
   }, [token])
-  
+
   const logout = () => {
     window.localStorage.removeItem("token");
     setUser({});
     window.location.reload()
   };
+ //console.log("token from app", token)
 
   return (
     <div>
       <h1 className="container">Fitness Tracker</h1>
       <nav className='navBar'>
         <div className="logout-btn" >
-         {user.username ? 
-         <div> 
-       {user.username}
-         <button onClick={logout}>Log Out</button> 
-         </div>: 
-         <Link to='/login'> Login</Link>}
+          {user.username ?
+            <div>
+              {user.username}
+              <button onClick={logout}>Log Out</button>
+            </div> :
+            <Link to='/login'> Login</Link>}
         </div>
-     
+
         <Link to='/register'>Register</Link>
         <Link to='/profile'>Profile</Link>
         <Link to='/activities'>Activities</Link>
-        <Link to= '/routines'>Routines</Link>
+        <Link to='/routines'>Routines</Link>
       </nav>
-      {user.username ? <h3>{`Welcome back: ${user.username}`}</h3>:null}
-     
+      {user.username ? <h3>{`Welcome back: ${user.username}`}</h3> : null}
+
       <Routes>
-        <Route path='/login' element={<Login user={user} setUser={setUser} token={token}  />} />
+        <Route path='/login' element={<Login user={user} setUser={setUser} token={token} />} />
         <Route path='/register' element={<Register setUser={setUser} setToken={setToken} />} />
-        <Route path='/profile' element={<Profile routines={routines} activities={activities} user={user} />}/>
-        <Route path='/routines' element = {<Routine routines={routines} token= {token} user={user} />}/>
+        <Route path='/profile' element={<Profile routines={routines} activities={activities} user={user} />} />
+        <Route path='/routines' element={<Routine routines={routines} token={token} user={user} />} />
         <Route path='/activities' element={<AllActivity activities={activities} />} />
       </Routes>
     </div>
