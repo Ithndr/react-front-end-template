@@ -85,6 +85,8 @@ const createNewRoutine = async ({token, name, goal}) => {
         })
       })
         const result = await response.json();
+        console.log('this is response', response)
+        console.log('this is result', result)
        return result
     } catch (error) {
         console.error(error)
