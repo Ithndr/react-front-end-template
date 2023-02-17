@@ -12,7 +12,7 @@ const AllRoutines = (props) => {
         <h2> Routines</h2>
         { user.username ? 
             <div> 
-            <form onSubmit = {() => createNewRoutine(token, name, goal)}>
+            <form onSubmit = {() => createNewRoutine({token, name, goal})}>
                 <input
                     placeholder = 'Name'
                     value = {name}

@@ -21,6 +21,11 @@ nav {
   border-radius: 0.5rem;
 }
 
+nav a.selected {
+  border: solid 2px  rgb(142,154,175);
+  background-color:  rgb(254,234,250);  
+}
+
 h2,h3 {
   font-family: 'Courier New', Courier, monospace;
 }
