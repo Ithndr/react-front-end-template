@@ -41,7 +41,7 @@ const App = () => {
     <div>
       <h1 className="container">Fitness Tracker</h1>
       <nav className='navBar'>
-        <Link to='/login'>Login</Link>
+        <Link to='/login'>{user.username ? "Log Out" : "Log In"}</Link>
         <Link to='/register'>Register</Link>
         <Link to='/profile'>Profile</Link>
         <Link to='/activities'>Activities</Link>

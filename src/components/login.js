@@ -30,7 +30,20 @@ export const Login = (props) => {
     //console.log(user)
     setUser(user);
   }
+
+  const logout = () => {
+    window.localStorage.removeItem("token");
+    setUser({});
+  };
+
   return (
+    <div className="logout">
+      {user.id ? (
+        <div className="logout-btn">
+          Welcome {user.username} <button onClick={logout}>Log Out</button>
+        </div>
+      ) : null}
+      {!user.id ? (
     <div>
       <form className='login' onSubmit={login} >
         <h1>
@@ -54,6 +67,8 @@ export const Login = (props) => {
           Don't Have An Account Yet? Click Here.
         </Link>
       </form>
+      </div>
+      ) : null}
     </div>
   );
 };
