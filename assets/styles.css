@@ -21,7 +21,9 @@ nav {
   border-radius: 0.5rem;
 }
 
-
+h2,h3 {
+  font-family: 'Courier New', Courier, monospace;
+}
 form {
   display: flex;
   flex-direction: column;
