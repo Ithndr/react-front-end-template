@@ -36,12 +36,25 @@ const App = () => {
     exchangeTokenForUser();
   }, [token])
   
+  const logout = () => {
+    window.localStorage.removeItem("token");
+    setUser({});
+    window.location.reload()
+  };
 
   return (
     <div>
       <h1 className="container">Fitness Tracker</h1>
       <nav className='navBar'>
-        <Link to='/login'>{user.username ? "Log Out" : "Log In"}</Link>
+        <div className="logout-btn" >
+         {user.username ? 
+         <div> 
+       {user.username}
+         <button onClick={logout}>Log Out</button> 
+         </div>: 
+         <Link to='/login'> Login</Link>}
+        </div>
+     
         <Link to='/register'>Register</Link>
         <Link to='/profile'>Profile</Link>
         <Link to='/activities'>Activities</Link>

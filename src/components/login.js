@@ -31,18 +31,11 @@ export const Login = (props) => {
     setUser(user);
   }
 
-  const logout = () => {
-    window.localStorage.removeItem("token");
-    setUser({});
-  };
+ 
 
   return (
     <div className="logout">
-      {user.id ? (
-        <div className="logout-btn">
-          Welcome {user.username} <button onClick={logout}>Log Out</button>
-        </div>
-      ) : null}
+      
       {!user.id ? (
     <div>
       <form className='login' onSubmit={login} >

@@ -7,12 +7,13 @@ const AllRoutines = (props) => {
     const token = props.token;
     const [name, setName] = useState('');
     const [goal, setGoal] = useState('');
+    const [isPublic, setIsPiblic] = useState('');
     return (
        <div> 
         <h2> Routines</h2>
         { user.username ? 
             <div> 
-            <form onSubmit = {() => createNewRoutine({token, name, goal})}>
+            <form onSubmit = {() => createNewRoutine({token, name, goal, isPublic})}>
                 <input
                     placeholder = 'Name'
                     value = {name}
@@ -22,6 +23,11 @@ const AllRoutines = (props) => {
                     placeholder = 'Goal'
                     value = {goal}
                     onChange = {(ev) => setGoal(ev.target.value)}
+                />
+                <input 
+                    type= 'checkbox'
+                    value = {isPublic}
+                    onChange = {(ev) => setIsPiblic(ev.target.checked)}
                 />
             </form>
             <button onClick = {() => createNewRoutine({token, name, goal})}> Create New Routine </button>    

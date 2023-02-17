@@ -71,7 +71,7 @@ const fetchActivity = async () => {
     }
 }
 
-const createNewRoutine = async ({token, name, goal}) => {
+const createNewRoutine = async ({token, name, goal, isPublic}) => {
     try { const response = await fetch('http://fitnesstrac-kr.herokuapp.com/api/routines', {
         method: "POST",
         headers: {
