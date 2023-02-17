@@ -11,7 +11,7 @@ const fetchLogin = async (username, password) => {
             }),
         });
         const result = await response.json();
-        console.log("login result",result);
+        //console.log("login result",result);
         return result;
     } catch (error) {
         console.error(error)

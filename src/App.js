@@ -25,16 +25,16 @@ const App = () => {
     fetchData();
   }, []) 
 
-  // useEffect(()=>{
-  //   const exchangeTokenForUser = async ()=>{
-  //     let token = window.localStorage.getItem('token');
-  //     if(token){
-  //       let user = await fetchUser(token);
-  //       setToken(user);
-  //     }
-  //   }
-  //   exchangeTokenForUser();
-  // }, [])
+  useEffect(()=>{
+    const exchangeTokenForUser = async ()=>{
+      let token = window.localStorage.getItem('token');
+      if(token){
+        let user = await fetchUser(token);
+        setUser(user);
+      }
+    };
+    exchangeTokenForUser();
+  }, [token])
   
 
   return (
@@ -50,7 +50,7 @@ const App = () => {
       {user.username ? <h3>{`welcome back: ${user.username}`}</h3>:null}
      
       <Routes>
-        <Route path='/login' element={<Login user={user} setUser={setUser} token={token} />} />
+        <Route path='/login' element={<Login user={user} setUser={setUser} token={token}  />} />
         <Route path='/register' element={<Register setUser={setUser} setToken={setToken} />} />
         <Route path='/profile' element={<Profile routines={routines} activities={activities} user={user} />}/>
         <Route path='/routines' element = {<Routine routines={routines}/>}/>
