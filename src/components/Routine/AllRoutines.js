@@ -1,5 +1,5 @@
 import React, {useState} from 'react';
-import { createNewRoutine, deleteRoutine } from '../../api/fetch';
+import { createNewRoutine, deleteRoutine, editRoutine } from '../../api/fetch';
 
 const AllRoutines = (props) => {
     const routines = props.routines;
@@ -7,7 +7,8 @@ const AllRoutines = (props) => {
     const token = props.token;
     const [name, setName] = useState('');
     const [goal, setGoal] = useState('');
-    const [isPublic, setIsPiblic] = useState('');
+    const [isPublic, setIsPublic] = useState('');
+    const [routineId, setRoutineId] = useState('')
     return (
        <div> 
         <h2> Routines</h2>
@@ -28,7 +29,7 @@ const AllRoutines = (props) => {
                 <input 
                     type= 'checkbox'
                     value = {isPublic}
-                    onChange = {(ev) => setIsPiblic(ev.target.checked)}
+                    onChange = {(ev) => setIsPublic(ev.target.checked)}
                 />
                 <label>Will this routine be public?</label>
                 </div>
@@ -45,6 +46,7 @@ const AllRoutines = (props) => {
                     <p> Goal: {routine.goal} </p>
                     <p> Activities: {routine.activities.length} </p>
                     {user.id === routine.creatorId ? <button className='deleteButton' onClick={console.log('Delete will happen here')}>Delete</button>: null}
+                    {user.id === routine.creatorId ? <button className='editButton' onClick={() => editRoutine({token, name, goal, isPublic})}>Edit</button>: null}  
                 </div>
                
             })

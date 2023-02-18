@@ -152,7 +152,27 @@ const deleteActivity  = async({token, activityId}) =>{
         console.error(error)
     }
 }
-//--------------------------------------------------------
+
+// fetch functionality for editng activities and routines --------
+const editRoutine = async ({token, name, goal, isPublic, routineId}) => {
+    try {
+        const response = await fetch(`${url}/routines/${routineId}`, {
+            method: "PATCH",  headers: {
+                'Content-Type': 'application/json',
+                Authorization: `Bearer ${token}`,
+            },
+            body: JSON.stringify({
+              name: name,
+              goal:goal,
+              isPublic: isPublic
+            })
+          })
+          const result = response.json();
+          return result 
+    } catch (error) {
+        console.error(error)
+    }
+}
 
 module.exports = {
     fetchLogin,
@@ -163,5 +183,6 @@ module.exports = {
     createNewRoutine,
     createNewActivity,
     deleteActivity,
-    deleteRoutine
+    deleteRoutine, 
+    editRoutine
 }

@@ -21,7 +21,10 @@ export const Profile = (props) => {
                                     <h3> Name: {routine.name} </h3>
                                     <p> Goal: {routine.goal} </p>
                                     <p> Activities: {routine.activities.length} </p>
-                                    {user.id === routine.creatorId ? <button className='deleteButton' onClick={console.log('Delete will happen here')}>Delete</button>: null}
+                                    {user.id === routine.creatorId ? <button className='deleteButton' onClick={console.log('Delete will happen here')}>Delete</button>  : null}
+                                    {user.id === routine.creatorId ? <button className='editButton' onClick={console.log('Edit will happen here')}>Edit</button>  : null}
+                                    
+        
                                 </div>
                                 }
                             })
