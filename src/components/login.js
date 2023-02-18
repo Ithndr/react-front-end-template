@@ -5,12 +5,12 @@ import { fetchLogin, fetchUser } from '../api/fetch';
 export const Login = (props) => {
   const user = props.user;
   const setUser = props.setUser;
+  const token = props.token;
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const message = 'Login'
 
   useEffect(() => {
-    const token = window.localStorage.getItem('token');
     if (!token) {
       return
     }

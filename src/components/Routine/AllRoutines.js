@@ -1,5 +1,5 @@
 import React, {useState} from 'react';
-import { createNewRoutine } from '../../api/fetch';
+import { createNewRoutine, deleteRoutine } from '../../api/fetch';
 
 const AllRoutines = (props) => {
     const routines = props.routines;
@@ -44,6 +44,7 @@ const AllRoutines = (props) => {
                     <p> Creator : {routine.creatorName} </p>
                     <p> Goal: {routine.goal} </p>
                     <p> Activities: {routine.activities.length} </p>
+                    {user.id === routine.creatorId ? <button className='deleteButton' onClick={console.log('Delete will happen here')}>Delete</button>: null}
                 </div>
                
             })
