@@ -58,7 +58,9 @@ const App = () => {
         </div>
 
         <Link to='/register'>Register</Link>
+        {user.username && (
         <Link to='/profile'>Profile</Link>
+        )}
         <Link to='/activities'>Activities</Link>
         <Link to='/routines'>Routines</Link>
       </nav>
