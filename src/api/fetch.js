@@ -154,9 +154,9 @@ const deleteActivity  = async({token, activityId}) =>{
 }
 
 // fetch functionality for editng activities and routines --------
-const editRoutine = async ({token, name, goal, isPublic, routineId}) => {
+const editRoutine = async ({token, name, goal, isPublic}) => {
     try {
-        const response = await fetch(`${url}/routines/${routineId}`, {
+        const response = await fetch(`${url}/routines/:routineId`, {
             method: "PATCH",  headers: {
                 'Content-Type': 'application/json',
                 Authorization: `Bearer ${token}`,
@@ -167,7 +167,7 @@ const editRoutine = async ({token, name, goal, isPublic, routineId}) => {
               isPublic: isPublic
             })
           })
-          const result = response.json();
+          const result = await response.json();
           return result 
     } catch (error) {
         console.error(error)
