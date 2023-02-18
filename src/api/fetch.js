@@ -1,6 +1,11 @@
+//Base url for using in all fetches
+const url = 'http://fitnesstrac-kr.herokuapp.com/api'
+
+
+//FETCH FOR USERS LOGIN AND REGISTER --------------
 const fetchLogin = async (username, password) => {
     try {
-        const response = await fetch('http://fitnesstrac-kr.herokuapp.com/api/users/login', {
+        const response = await fetch(`${url}/users/login`, {
             method: "POST",
             headers: {
                 'Content-Type': 'application/json'
@@ -19,7 +24,7 @@ const fetchLogin = async (username, password) => {
 }
 const fetchUser = async (token) => {
     try {
-        const response = await fetch('http://fitnesstrac-kr.herokuapp.com/api/users/me', {
+        const response = await fetch(`${url}/users/me`, {
             headers: {
                 'Content-Type': 'application/json',
                 'Authorization': `Bearer ${token}`
@@ -33,7 +38,7 @@ const fetchUser = async (token) => {
 }
 const fetchRegister = async (username, password) => {
     try {
-        const response = await fetch('http://fitnesstrac-kr.herokuapp.com/api/users/register', {
+        const response = await fetch(`${url}/users/register`, {
             method: "POST",
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({
@@ -47,10 +52,12 @@ const fetchRegister = async (username, password) => {
         console.error(error);
     }
 }
+//----------------------------------------------------------
 
+//FETCH FOR GETTING ALL ROUTINES AND ACTIVITIES-------------
 const getAllRoutines = async () => {
     try {
-        const response = await fetch('http://fitnesstrac-kr.herokuapp.com/api/routines');
+        const response = await fetch(`${url}/routines`);
         const result = await response.json();
         return result
     } catch (error) {
@@ -59,7 +66,7 @@ const getAllRoutines = async () => {
 }
 const fetchActivity = async () => {
     try {
-        const response = await fetch('http://fitnesstrac-kr.herokuapp.com/api/activities', {
+        const response = await fetch(`${url}/activities`, {
             headers: {
                 'Content-Type': 'application/json',
             },
@@ -70,9 +77,11 @@ const fetchActivity = async () => {
         console.error(error);
     }
 }
+//------------------------------------------------------------
 
+//FETCH FOR CREATING ROUTINES AND ACTIVITIES------------------
 const createNewRoutine = async ({token, name, goal, isPublic}) => {
-    try { const response = await fetch('http://fitnesstrac-kr.herokuapp.com/api/routines', {
+    try { const response = await fetch(`${url}/routines`, {
         method: "POST",
         headers: {
             'Content-Type': 'application/json',
@@ -90,8 +99,9 @@ const createNewRoutine = async ({token, name, goal, isPublic}) => {
         console.error(error)
     }
 }
+
 const createNewActivity = async ({token, name, description}) => {
-    try { const response = await fetch('http://fitnesstrac-kr.herokuapp.com/api/activities', {
+    try { const response = await fetch(`${url}/activities`, {
         method: "POST",
         headers: {
             'Content-Type': 'application/json',
@@ -103,13 +113,46 @@ const createNewActivity = async ({token, name, description}) => {
         })
       })
         const result = await response.json();
-        console.log('this is response', response)
-        console.log('this is result', result)
        return result
     } catch (error) {
         console.error(error)
     }
 }
+//--------------------------------------------------------
+
+//FETCH FOR DELTEING ROUTINES AND ACTIVITIES--------------
+const deleteRoutine  = async({token, routineId}) =>{
+    try{
+        const response = await fetch(`${url}/routines/${routineId}`,{
+            method: "DELETE",
+            headers: {
+                'Content-Type': 'application/json',
+                Authorization: `Bearer ${token}`,
+            }
+        })
+        const result = response.json();
+        return result;
+    }catch(error){
+        console.error(error)
+    }
+}
+
+const deleteActivity  = async({token, activityId}) =>{
+    try{
+        const response = await fetch(`${url}/routines/${activityId}`,{
+            method: "DELETE",
+            headers: {
+                'Content-Type': 'application/json',
+                Authorization: `Bearer ${token}`,
+            }
+        })
+        const result = response.json();
+        return result;
+    }catch(error){
+        console.error(error)
+    }
+}
+//--------------------------------------------------------
 
 module.exports = {
     fetchLogin,
@@ -118,5 +161,7 @@ module.exports = {
     getAllRoutines,
     fetchActivity,
     createNewRoutine,
-    createNewActivity
+    createNewActivity,
+    deleteActivity,
+    deleteRoutine
 }

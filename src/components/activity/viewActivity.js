@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import { createActivity } from "./createActivity";
 import { createNewActivity } from "../../api/fetch";
 
 export const AllActivity = (props) =>{
@@ -12,7 +11,6 @@ const [description, setDescription] = useState('');
     return (
     <div>
         <h2>Activities</h2>
-        {/* <createActivity activities={activities}/> */}
         { user.username ? 
             <div> 
             <form>
