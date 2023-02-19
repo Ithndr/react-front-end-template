@@ -65,6 +65,33 @@ const getAllRoutines = async () => {
         console.error(error)
     }
 }
+const fetchRoutinesByUser = async (token, username) =>{
+    try{
+        if(token){
+            const response = await fetch(`${url}/users/${username}/routines`, {
+              headers: {
+                "Content-Type": "application/json",
+                "Authorization": `Bearer ${token}`
+              },
+            });
+            const result = await response.json();
+            console.log(result)
+            return result;
+          } else {
+            const response = await fetch(`${url}/users/${username}/routines`, {
+              headers: {
+                "Content-Type": "application/json",
+              },
+            });
+            const result = await response.json();
+            console.log(result)
+            return result;
+          }
+    }catch(error){
+        console.error(error)
+    }
+
+}
 const fetchActivity = async () => {
     try {
         const response = await fetch(`${url}/activities`, {
@@ -158,7 +185,8 @@ const deleteActivity  = async({token, activityId}) =>{
 const editRoutine = async ({token, name, goal, isPublic, routineId}) => {
     try {
         const response = await fetch(`${url}/routines/${routineId}`, {
-            method: "PATCH",  headers: {
+            method: "PATCH",  
+            headers: {
                 'Content-Type': 'application/json',
                 Authorization: `Bearer ${token}`,
             },
@@ -169,20 +197,25 @@ const editRoutine = async ({token, name, goal, isPublic, routineId}) => {
             })
           })
           const result = await response.json();
+          console.log(result)
           return result 
     } catch (error) {
         console.error(error)
     }
 }
 
-const attachActivityToRoutine = async ({activityId, count, duration, routineId}) =>{
+const attachActivityToRoutine = async ({token, activityId, count, duration, routineId}) =>{
     try {
-        const response = await fetch (`${url}/api/routines/${routineId}/activities`,{
+        const response = await fetch (`${url}/routines/${routineId}/activities`,{
             method: "POST",
+            headers: {
+                'Content-Type': 'application/json',
+                Authorization: `Bearer ${token}`
+            },
             body: JSON.stringify({
-              activityId,
-              count, 
-              duration
+              activityId: activityId,
+              count: count, 
+              duration: duration
   })
         });
         const result = await response.json();
@@ -198,6 +231,7 @@ module.exports = {
     fetchUser,
     fetchRegister,
     getAllRoutines,
+    fetchRoutinesByUser,
     fetchActivity,
     createNewRoutine,
     createNewActivity,
