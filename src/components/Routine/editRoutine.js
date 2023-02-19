@@ -2,13 +2,14 @@ import React, {useState}from 'react';
 import { editRoutine} from '../../api/fetch';
 
 const UpdateRoutine = (props) => {
-    const token = props.token 
+    const token = props.token;
+    const routineId = props.routineId;
     const [name, setName] = useState('');
     const [goal, setGoal] = useState('');
     const [isPublic, setIsPublic] = useState('')
     return (
         <div>
-               <form>
+               
                 <input
                     placeholder = 'Name'
                     value = {name}
@@ -27,8 +28,8 @@ const UpdateRoutine = (props) => {
                 />
                 <label>Will this routine be public?</label>
                 </div>
-            </form>
-            <button onClick={editRoutine}> Submit </button>
+            
+            <button onClick={editRoutine({token, name, goal, isPublic, routineId})}> Submit </button>
         </div>
         
     )
