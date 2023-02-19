@@ -175,7 +175,7 @@ const editRoutine = async ({token, name, goal, isPublic, routineId}) => {
     }
 }
 
-const attachActivityToRoutine = async (activityId, count, duration, routineId) =>{
+const attachActivityToRoutine = async ({activityId, count, duration, routineId}) =>{
     try {
         const response = await fetch (`${url}/api/routines/${routineId}/activities`,{
             method: "POST",

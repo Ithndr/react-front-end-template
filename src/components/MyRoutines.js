@@ -3,8 +3,8 @@ import { attachActivityToRoutine } from "../api/fetch";
 
 const MyRoutines = ({user, activities }) =>{
     const [myRoutines, setMyRoutines] = useState([]);
-    const [count, setCount] = useState(0);
-    const [duration, setDuration] = useState(0);
+    const [count, setCount] = useState("");
+    const [duration, setDuration] = useState("");
     const [activity, setActivity] = useState(null);
 
 const handleSubmit = ({ routineId }) => {
@@ -41,8 +41,16 @@ setMyRoutines(result);
                         <p>Id: {routine.id}</p>
                         <form  onSubmit={(ev) => { ev.preventDefault(); 
                         handleSubmit({ routineId: routine.id })}}>
-                            <input name="count" value={count} />
-                            <input name="duration" value={duration} />
+                            <input name="count" 
+                            placeholder='count'
+                            value = {count}
+                            onChange = {(ev) => setCount(ev.target.value)}
+                             />
+                            <input name="duration" 
+                            placeholder='duration'
+                            value={duration} 
+                            onChange = {(ev) => setDuration(ev.target.value)}
+                            />
                             <select>
                      {activities.map((activity) => (
                     <option value={activity.id}>{activity.name}</option>
