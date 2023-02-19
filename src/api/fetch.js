@@ -175,6 +175,23 @@ const editRoutine = async ({token, name, goal, isPublic, routineId}) => {
     }
 }
 
+const attachActivityToRoutine = async (activityId, count, duration, routineId) =>{
+    try {
+        const response = await fetch (`${url}/api/routines/${routineId}/activities`,{
+            method: "POST",
+            body: JSON.stringify({
+              activityId,
+              count, 
+              duration
+  })
+        });
+        const result = await response.json();
+        return result;
+    } catch (error) {
+        console.error(error)
+    }
+}
+
 module.exports = {
     fetchLogin,
     fetchUser,
@@ -185,5 +202,6 @@ module.exports = {
     createNewActivity,
     deleteActivity,
     deleteRoutine, 
-    editRoutine
+    editRoutine,
+    attachActivityToRoutine
 }

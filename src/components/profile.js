@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import UpdateRoutine from './Routine/editRoutine';
+import MyRoutines from './MyRoutines';
 
 export const Profile = (props) => {
     const user = props.user;
@@ -23,6 +24,7 @@ export const Profile = (props) => {
                     <h1>{user.username}'s Profile</h1>
                     <div className='myRoutines'>
                         <h2>My Routines</h2>
+                        <MyRoutines user={user} activities={activities} />
                         {
                             routines.map((routine) => {
                                 if(routine.creatorId === user.id){
