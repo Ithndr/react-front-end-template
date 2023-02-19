@@ -45,7 +45,7 @@ const AllRoutines = (props) => {
                     <p> Creator : {routine.creatorName} </p>
                     <p> Goal: {routine.goal} </p>
                     <p> Activities: {routine.activities.length} </p>
-                    {user.id === routine.creatorId ? <button className='deleteButton' onClick={console.log('Delete will happen here')}>Delete</button>: null}
+                   {user.id === routine.creatorId ? <button className='deleteButton' onClick={console.log('Delete will happen here')}>Delete</button>: null}
                     {user.id === routine.creatorId ? <button className='editButton' onClick={() => editRoutine({token, name, goal, isPublic})}>Edit</button>: null}  
                 </div>
                

@@ -36,6 +36,7 @@ const fetchUser = async (token) => {
         console.error(error)
     }
 }
+
 const fetchRegister = async (username, password) => {
     try {
         const response = await fetch(`${url}/users/register`, {
@@ -154,9 +155,9 @@ const deleteActivity  = async({token, activityId}) =>{
 }
 
 // fetch functionality for editng activities and routines --------
-const editRoutine = async ({token, name, goal, isPublic}) => {
+const editRoutine = async ({token, name, goal, isPublic, routineId}) => {
     try {
-        const response = await fetch(`${url}/routines/:routineId`, {
+        const response = await fetch(`${url}/routines/${routineId}`, {
             method: "PATCH",  headers: {
                 'Content-Type': 'application/json',
                 Authorization: `Bearer ${token}`,
