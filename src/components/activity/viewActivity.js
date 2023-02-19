@@ -9,10 +9,10 @@ const [name, setName] = useState('');
 const [description, setDescription] = useState('');
 
     return (
-    <div>
+    <div className="allActivities">
         <h2>Activities</h2>
         { user.username ? 
-            <div> 
+            <div className="allActivities-form"> 
             <form>
                 <input
                     placeholder = 'Name'
@@ -30,7 +30,7 @@ const [description, setDescription] = useState('');
             : null}
          {activities.map((activity) =>{
         return(
-            <div style={{border: '1px solid black'}} key={activity.id}>
+            <div className="singleActivity" key={activity.id}>
                 <p>Name: {activity.name}</p>
                 <p>Description: {activity.description}</p>
             </div>

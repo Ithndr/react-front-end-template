@@ -10,11 +10,12 @@ const AllRoutines = (props) => {
     const [isPublic, setIsPublic] = useState('');
     const [routineId, setRoutineId] = useState('')
     return (
-       <div> 
+       <div className="allRoutines"> 
         <h2> Routines</h2>
         { user.username ? 
-            <div> 
+            <div className="allRoutines-form"> 
             <form>
+             <div className='routine-input'>
                 <input
                     placeholder = 'Name'
                     value = {name}
@@ -33,6 +34,7 @@ const AllRoutines = (props) => {
                 />
                 <label>Will this routine be public?</label>
                 </div>
+                </div>
             </form>
             <button onClick = {() => createNewRoutine({token, name, goal, isPublic})}> Create New Routine </button>    
         </div> 
@@ -40,7 +42,7 @@ const AllRoutines = (props) => {
     
         {
             routines.map((routine) => {
-             return  <div key={routine.id}>
+             return  <div key={routine.id} className="singleRoutine">
                     <h3> Name: {routine.name} </h3> 
                     <p> Creator : {routine.creatorName} </p>
                     <p> Goal: {routine.goal} </p>

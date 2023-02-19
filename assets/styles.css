@@ -37,3 +37,104 @@ form {
 form > * {
   margin:1rem;
 }
+
+.allRoutines{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  box-shadow: 0 1.4rem 8rem black;
+  border: 1px solid lightskyblue;
+  padding: 0.3rem;
+  width: 100%;
+  background-color: thistle;
+  margin-top: 15px;
+}
+
+.allRoutines-form{
+  font-family: 'Courier New', Courier, monospace;
+  font-size: 18px;
+  display: flex;
+  flex-direction: column;
+  justify-content:center;
+  align-items: center;
+  width: 100%;
+  height: 200%;
+}
+.singleRoutine{
+  width: 800px;
+  height: 200px;
+  box-shadow: 0 1.4rem 8rem black;
+  border: 1px solid lightskyblue;
+  padding: 5px;
+  display: flex;
+  align-items: center;
+  border-radius: 0.8rem;
+  margin: 5px;
+  font-family: 'Courier New', Courier, monospace;
+  background-color: thistle;
+}
+.singleRoutine p{
+  margin: 20px;
+  margin-left: 15px;
+}
+
+.profile{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  box-shadow: 0 1.4rem 8rem black;
+  border: 1px solid lightskyblue;
+  padding: 0.3rem;
+  background-color: thistle;
+  margin-top: 15px;
+  width: 600px;
+}
+ .myRoutines{
+  font-family: 'Courier New', Courier, monospace;
+  font-size: 18px;
+  display: flex;
+  flex-direction: column;
+  justify-content:center;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+}
+
+.allActivities{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  box-shadow: 0 1.4rem 8rem black;
+  border: 1px solid lightskyblue;
+  padding: 0.3rem;
+  width: 100%;
+  background-color: thistle;
+  margin-top: 15px;
+}
+.allActivities-form{
+  font-family: 'Courier New', Courier, monospace;
+  font-size: 18px;
+  display: flex;
+  flex-direction: column;
+  justify-content:center;
+  align-items: center;
+  width: 100%;
+  height: 200%;
+}
+.singleActivity{
+  width: 800px;
+  height: 200px;
+  box-shadow: 0 1.4rem 8rem black;
+  border: 1px solid lightskyblue;
+  padding: 5px;
+  display: flex;
+  align-items: center;
+  border-radius: 0.8rem;
+  margin: 5px;
+  font-family: 'Courier New', Courier, monospace;
+  background-color: thistle;
+}
+.singleActivity{
+  margin: 20px;
+  margin-left: 15px;
+}

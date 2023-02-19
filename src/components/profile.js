@@ -41,10 +41,11 @@ export const Profile = (props) => {
     else {
         
         return (
-            <div>
+            <div className='profile'>
                 <h1>{user.username}'s Profile</h1>
                 <div className='myRoutines'>
                     <h2>My Routines</h2>
+                    <div>
                     { 
                         myRoutines.map((routine) => {
                             if (routine.creatorId === user.id) {
@@ -65,6 +66,7 @@ export const Profile = (props) => {
                             }
                         })
                    }
+                            </div>
                 </div>
             </div>
         )
