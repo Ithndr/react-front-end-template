@@ -46,7 +46,7 @@ const AllRoutines = (props) => {
                 </div>
                 </div>
             </form>
-            <button onClick = {() => createNewRoutine({token, name, goal, isPublic})}> Create New Routine </button>    
+            <button className="routine-btn"onClick = {() => createNewRoutine({token, name, goal, isPublic})}> Create New Routine </button>    
         </div> 
             : null}
     

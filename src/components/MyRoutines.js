@@ -29,7 +29,7 @@ const MyRoutines = (props) => {
                     value={duration}
                     onChange={(ev) => setDuration(ev.target.value)}
                 />
-                <select onChange={ev => { setActivity(ev.target.value); console.log(ev.target.value) }}>
+                <select onChange={ev => { setActivity(ev.target.value) }}>
                     {activities.map((activity) => (
                         <option key={activity.id} value={activity.id} >{activity.name}</option>
                     ))}

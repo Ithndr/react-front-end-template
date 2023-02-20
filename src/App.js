@@ -51,8 +51,7 @@ const App = () => {
         <div className="logout-btn" >
           {user.username ?
             <div>
-              {user.username}
-              <button onClick={logout}>Log Out</button>
+              <button className='logout-btn' onClick={logout}>Log Out</button>
             </div> :
             <Link to='/login'> Login</Link>}
         </div>

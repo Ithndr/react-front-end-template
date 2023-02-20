@@ -11,7 +11,7 @@ const UpdateRoutine = (props) => {
     const [goal, setGoal] = useState('');
     const [isPublic, setIsPublic] = useState(false)
     return (
-        <div>
+        <div className='editRoutine-form'>
                
                 <input
                     placeholder = 'Name'

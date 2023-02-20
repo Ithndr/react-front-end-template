@@ -15,18 +15,14 @@ nav {
   display: flex;
   justify-content: space-around;
   margin: 5px;
+  align-items: center;
   padding: 5px;
   border: 1px solid lightskyblue;
   box-shadow: 0 1rem 6rem black;
   border-radius: 0.5rem;
 }
 
-nav a.selected {
-  border: solid 2px  rgb(142,154,175);
-  background-color:  rgb(254,234,250);  
-}
-
-h2,h3 {
+h1,h2,h3 {
   font-family: 'Courier New', Courier, monospace;
 }
 form {
@@ -36,6 +32,68 @@ form {
 
 form > * {
   margin:1rem;
+}
+
+.login {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  width: 100%;
+}
+
+.login-form{
+  display: flex;
+  flex-direction: column;
+  justify-content:center;
+  align-items: center;
+  padding-top: 20px;
+  width: 100%;
+  height: 200%;
+}
+.login input{
+  width: 200px;
+  height: 30px;
+  font-size: 15px;
+  padding-left: 10px;
+  margin: 5px;
+}
+.login button{
+  width: 80px;
+  height: 30px;
+  margin-top: 15px;
+}
+.login button:hover{
+  cursor: pointer;
+}
+.register {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  width: 100%;
+}
+.register-form{
+  display: flex;
+  flex-direction: column;
+  justify-content:center;
+  align-items: center;
+  padding-top: 20px;
+  width: 100%;
+  height: 200%;
+}
+.register input{
+  width: 200px;
+  height: 30px;
+  font-size: 15px;
+  padding-left: 10px;
+  margin: 5px;
+}
+.register button{
+  width: 80px;
+  height: 30px;
+  margin-top: 15px;
+}
+.register button:hover{
+  cursor: pointer;
 }
 
 .allRoutines{
@@ -58,7 +116,20 @@ form > * {
   justify-content:center;
   align-items: center;
   width: 100%;
-  height: 200%;
+  height: 150%;
+  padding-bottom: 20px;
+}
+.routine-input{
+  display: flex;
+  justify-content: space-around;
+  flex-direction: column;
+  width: 200px;
+  height: 100px;
+}
+.routine-btn{
+  width: 200px;
+  height: 30px;
+  margin-top: 10px;
 }
 .singleRoutine{
   width: 800px;
@@ -128,6 +199,7 @@ form > * {
   border: 1px solid lightskyblue;
   padding: 5px;
   display: flex;
+  justify-content: space-between;
   align-items: center;
   border-radius: 0.8rem;
   margin: 5px;
@@ -137,4 +209,32 @@ form > * {
 .singleActivity{
   margin: 20px;
   margin-left: 15px;
+}
+.activity-input{
+  display: flex;
+  justify-content: space-around;
+  flex-direction: column;
+  width: 200px;
+  height: 100px;
+}
+.activity-btn{
+  width: 200px;
+  height: 30px;
+  margin-top: 10px;
+}
+.activityEdit-btn{
+  width: 200px;
+  height: 30px;
+}
+.profile-editButton{
+  width: 100px;
+  height: 30px;
+}
+.profile-addButton{
+  width: 100px;
+  height: 30px;
+}
+.profile-deleteButton{
+  width: 100px;
+  height: 30px;
 }

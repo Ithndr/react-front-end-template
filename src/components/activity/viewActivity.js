@@ -23,6 +23,7 @@ const handleEdit = (ev, id) => {
         { user.username ? 
             <div className="allActivities-form"> 
             <form>
+                <div className="activity-input">
                 <input
                     placeholder = 'Name'
                     value = {name}
@@ -33,8 +34,9 @@ const handleEdit = (ev, id) => {
                     value = {description}
                     onChange = {(ev) => setDescription(ev.target.value)}
                 />
+            </div>
             </form>
-            <button onClick = {() => createNewActivity({token, name, description})}> Create New Activity </button>   
+            <button className="activity-btn" onClick = {() => createNewActivity({token, name, description})}> Create New Activity </button>   
              
         </div> 
             : null}
@@ -42,10 +44,10 @@ const handleEdit = (ev, id) => {
            // console.log('this is activity',activity)
         return(
             <div className="singleActivity" key={activity.id}>
-                <p>Name: {activity.name}</p>
-                <p>Description: {activity.description}</p>
+                <p> Name:  {activity.name}</p>
+                <p> Description:  {activity.description}</p>
                     <div> 
-                        <button onClick = {() => editActivities({ name, description, activityId})}> Edit </button>  
+                        <button className="activityEdit-btn" onClick = {() => editActivities({ name, description, activityId})}> Edit </button>  
                     </div>
             </div>
            
