@@ -75,7 +75,7 @@ const fetchRoutinesByUser = async (token, username) =>{
               },
             });
             const result = await response.json();
-            console.log(result)
+            //console.log(result)
             return result;
           } else {
             const response = await fetch(`${url}/users/${username}/routines`, {
@@ -226,6 +226,25 @@ const attachActivityToRoutine = async ({token, activityId, count, duration, rout
     }
 }
 
+const editActivities = async({ name, description, activityId }) => {
+    try {
+        const response = await fetch (`${url}/api/activities/${activityId}`, {
+            method: "PATCH",  
+            headers: {
+                'Content-Type': 'application/json',
+               
+            },
+            body: JSON.stringify({
+              name: name,
+              description: description,
+            })
+          })
+          const result = await response.json();
+          console.log(result)
+    } catch (error) {
+        
+    }
+}
 module.exports = {
     fetchLogin,
     fetchUser,
@@ -238,5 +257,6 @@ module.exports = {
     deleteActivity,
     deleteRoutine, 
     editRoutine,
-    attachActivityToRoutine
+    attachActivityToRoutine,
+    editActivities
 }

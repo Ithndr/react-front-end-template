@@ -11,11 +11,12 @@ export const Profile = (props) => {
     const [add, setAdd] = useState(false);
     const [routineId, setRoutineId] = useState('');
     const [myRoutines, setMyRoutines] = useState([]);
-    console.log(token)
-    console.log(user)
+    const [deleting, setDeleting] = useState(false)
+   // console.log(token)
+    //console.log(user)
     const getMyRoutines = async () =>{
         const routines = await fetchRoutinesByUser(token, user.username);
-        console.log(routines)
+       // console.log(routines)
         setMyRoutines(routines)
     }
     useEffect(() => {
@@ -35,6 +36,13 @@ export const Profile = (props) => {
         setRoutineId(id)
         setAdd(!add)
     }
+
+    const handleDeleteRoutine = (ev, id) => {
+        ev.preventDefault()
+        setRoutineId(id)
+        setDeleting(!deleting)
+    }
+
     if (!user.username) {
         return <h1>Please log in before viewing profile</h1>
     }
@@ -48,12 +56,13 @@ export const Profile = (props) => {
                     <div>
                     { 
                         myRoutines.map((routine) => {
+                            console.log('this is routine', routine)
                             if (routine.creatorId === user.id) {
                                 return <div key={routine.id}>
                                     <h3> Name: {routine.name} </h3>
                                     <p> Goal: {routine.goal} </p>
                                     <p> Activities: {routine.activities.length} </p>
-                                    {/* {user.id === routine.creatorId ? <button className='deleteButton' onClick={deleteRoutine(token, routine.id)}>Delete</button>  : null} */}
+                        
                                     <div>
                                         {user.id === routine.creatorId ? <button className='editButton' onClick={ev => {handleEdit(ev, routine.id)}}>Edit</button> : null}
                                         {edit && routineId === routine.id ? <UpdateRoutine token={token} routineId={routineId} /> : null}
@@ -61,6 +70,10 @@ export const Profile = (props) => {
                                     <div>
                                         {user.id === routine.creatorId ? <button className='addButton' onClick={ev => handleAddActivity(ev, routine.id)}>Add Activity</button> : null}
                                         {add && routineId === routine.id ? <MyRoutines user={user} activities={activities} token={token} routineId={routine.id} /> : null}
+                                    </div>
+                                    <div>
+                                        {user.id === routine.creatorId ? <button className='deleteButton' onClick={ev => handleDeleteRoutine(ev, routine.id)}>Delete </button> : null}
+                                        {deleting && routineId === routine.id ? <MyRoutines user={user} activities={activities} token={token} routineId={routine.id} /> : null}
                                     </div>
                                 </div>
                             }

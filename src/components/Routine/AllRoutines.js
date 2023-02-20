@@ -1,5 +1,6 @@
 import React, {useState} from 'react';
 import { createNewRoutine, deleteRoutine, editRoutine } from '../../api/fetch';
+import UpdateRoutine from './editRoutine';
 
 const AllRoutines = (props) => {
     const routines = props.routines;
@@ -8,7 +9,16 @@ const AllRoutines = (props) => {
     const [name, setName] = useState('');
     const [goal, setGoal] = useState('');
     const [isPublic, setIsPublic] = useState('');
-    const [routineId, setRoutineId] = useState('')
+    const [routineId, setRoutineId] = useState('');
+    const [edit, setEdit] = useState(false);
+
+    const handleEdit = (ev, id) => {
+        ev.preventDefault()
+        console.log(id)
+        setRoutineId(id)
+        setEdit(!edit)
+    }
+
     return (
        <div className="allRoutines"> 
         <h2> Routines</h2>
@@ -47,8 +57,11 @@ const AllRoutines = (props) => {
                     <p> Creator : {routine.creatorName} </p>
                     <p> Goal: {routine.goal} </p>
                     <p> Activities: {routine.activities.length} </p>
-                   {user.id === routine.creatorId ? <button className='deleteButton' onClick={console.log('Delete will happen here')}>Delete</button>: null}
-                    {user.id === routine.creatorId ? <button className='editButton' onClick={() => editRoutine({token, name, goal, isPublic})}>Edit</button>: null}  
+                   {/* {user.id === routine.creatorId ? <button className='deleteButton' onClick={console.log('Delete will happen here')}>Delete</button>: null} */}
+                   <div>
+                        {user.id === routine.creatorId ? <button className='editButton' onClick={ev => {handleEdit(ev, routine.id)}}>Edit</button> : null}
+                        {edit && routineId === routine.id ? <UpdateRoutine token={token} routineId={routineId} /> : null}
+                    </div>
                 </div>
                
             })
