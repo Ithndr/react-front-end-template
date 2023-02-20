@@ -1,11 +1,13 @@
 import React, {useState}from 'react';
 import { editActivities} from '../../api/fetch';
 
-const UpdateActivities = () => {
+const UpdateActivities = (props) => {
+    const activityId = props.activityId;
     const token = window.localStorage.getItem('token'); 
     const [name, setName] = useState('');
     const [description, setDescription] = useState('');
-   
+    const [edit, setEdit] = useState(false);
+
     return (
         <div>
                
@@ -21,7 +23,6 @@ const UpdateActivities = () => {
                 />
                 
             <button onClick={ev => {editActivities({token, name, description, activityId})}}> Submit </button>
-            {edit && routineId === routine.id ? <UpdateRoutine token={token} routineId={routineId} /> : null}
         </div>
         
     )

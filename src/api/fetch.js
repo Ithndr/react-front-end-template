@@ -226,13 +226,13 @@ const attachActivityToRoutine = async ({token, activityId, count, duration, rout
     }
 }
 
-const editActivities = async({ name, description, activityId }) => {
+const editActivities = async({ token, name, description, activityId }) => {
     try {
         const response = await fetch (`${url}/activities/${activityId}`, {
             method: "PATCH",  
             headers: {
                 'Content-Type': 'application/json',
-               
+                Authorization: `Bearer ${token}`
             },
             body: JSON.stringify({
               name: name,

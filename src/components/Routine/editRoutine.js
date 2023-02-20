@@ -4,9 +4,6 @@ import { editRoutine} from '../../api/fetch';
 const UpdateRoutine = (props) => {
     const token = window.localStorage.getItem('token');
     const routineId = props.routineId;
-    console.log(props)
-    console.log(token)
-    console.log(routineId)
     const [name, setName] = useState('');
     const [goal, setGoal] = useState('');
     const [isPublic, setIsPublic] = useState(false)

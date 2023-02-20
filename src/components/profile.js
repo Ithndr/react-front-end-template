@@ -48,7 +48,6 @@ export const Profile = (props) => {
                     <h2>My Routines</h2>
                     {
                         myRoutines.map((routine) => {
-                            if (routine.creatorId === user.id) {
                                 return <div key={routine.id}>
                                     <h3> Name: {routine.name} </h3>
                                     <p> Goal: {routine.goal} </p>
@@ -65,7 +64,6 @@ export const Profile = (props) => {
                                         {add && routineId === routine.id ? <MyRoutines user={user} activities={activities} token={token} routineId={routine.id} /> : null}
                                     </div>
                                 </div>
-                            }
                         })
                     }
                 </div>
